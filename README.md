@@ -1,2 +1,1 @@
-# AthenaHacks
 # roomiez_frontend
