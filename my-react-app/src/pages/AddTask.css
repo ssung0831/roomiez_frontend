@@ -11,10 +11,10 @@
     z-index: 1;
     /* rest of the styles */
   }
-  .login{
+  .loginBox{
     position:absolute;
     background-color: rgba(238, 228, 241, 0.969);
-    opacity: 0.;
+    opacity: 0.95;
     left:15%;
     right:15%;
     width:40%;

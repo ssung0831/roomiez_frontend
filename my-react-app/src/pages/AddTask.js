@@ -19,12 +19,14 @@ export const AddTask = () => {
     
     <div className = "container-fluid page-container">
    
-   <img src={myImage} alt="My Image" className="half-image" style={{position: 'absolute', top: 50, left: 0, transform: 'translateY(-50%)'}} />
+   <img src={myImage} alt="My Image" className="half-image" style={{position: 'absolute', top: 50, left: 200, transform: 'translateY(-50%)'}} />
 
-    <img src={image} alt="house" style={{ position: 'absolute', top: 8, left: 8, height: '80px', width: '80px' }} />
+   <a href = "/ScheduleCloseup">
+   <img src={image} alt="house" style={{ position: 'absolute', top: 8, left: 8, height: '80px', width: '80px', opacity: '80%' }} />
+   </a>
    
    
-    <div class="container login">
+    <div className="loginBox">
     <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold', marginTop: '2%' }}>Add Task</div>
 
 

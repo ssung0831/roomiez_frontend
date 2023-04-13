@@ -1,0 +1,105 @@
+.page-container{
+  background: url("./background.png");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    /* rest of the styles */
+  }
+  .login{
+    position:absolute;
+    background-color: rgba(238, 228, 241, 0.969);
+    opacity: 0.8;
+    left:10%;
+    right:10%;
+    width:80%;
+    height: 70%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 45px 45px 45px 45px;
+}
+
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+   *,
+   *:after,
+   *:before {
+    box-sizing: border-box;
+}
+  
+body {
+  font: 100% 'Raleway', sans-serif;
+  color: #55595c;
+  font-size: 15%;
+  overflow: hidden;
+ }
+   
+   
+   h1 {
+    margin-top: 0;
+    margin-bottom: 3.236rem;
+    text-align: center;
+    font-size: 1.618rem;
+   }
+   
+   
+
+
+
+   .btn2 {
+    color: white;
+    background-color: #934C81;
+    border: none;
+    padding: 10px 70px;
+    text-align: center;
+    display: flex;
+    display: grid;
+    margin: auto;
+    position: relative;
+    font-size: 20px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    width: 60%; /* set the width to 50% of the parent container */
+    transform: translate(0, 750%);
+  }
+   
+   .btn2:focus, .btn2:hover {
+    color: white;
+    background-color: #C67B86;
+    box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);
+   }
+   .btn2:focus {
+    outline: 0;
+   }
+
+   .taskDescription{
+    border: 1px solid black; 
+    position: center;
+    position: absolute;
+    width: 80%;
+    height: 50%;
+    padding: 10px;
+    font: 100% 'Raleway', sans-serif;
+    color: #55595c;
+    font-size: 35%;
+    position: absolute; 
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+  }
+
