@@ -21,7 +21,7 @@ export const AddTask = () => {
    
    <img src={myImage} alt="My Image" className="half-image" style={{position: 'absolute', top: 50, left: 200, transform: 'translateY(-50%)'}} />
 
-   <a href = "/ScheduleCloseup">
+   <a href = "/Banner">
    <img src={image} alt="house" style={{ position: 'absolute', top: 8, left: 8, height: '80px', width: '80px', opacity: '80%' }} />
    </a>
    
