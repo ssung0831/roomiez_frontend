@@ -1,0 +1,53 @@
+.Banner {
+  background: url("./background4.png");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.align-right {
+  display: flex !important;
+  justify-content: right !important;
+}
+
+.Button{
+  font-family: 'Raleway', sans-serif;
+}
+
+
+.plus{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.circle2 {
+  height: 140vmin;
+  opacity:0.6;
+  border-radius: 50%;
+  background-image: linear-gradient(99deg,#C46186, #4D2D74);
+  animation: circle-spin infinite 20s linear;
+    
+}
+body {
+  overflow: hidden;
+}
+
+.icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+@keyframes circle-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
