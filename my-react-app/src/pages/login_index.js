@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import '/Users/anoushkamakkad/201-project/group-code/roomiez_frontend/my-react-app/src/pages/loginApp.css';
+import './loginApp.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

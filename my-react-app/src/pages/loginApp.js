@@ -4,7 +4,7 @@ import './loginApp.css';
 import { Login } from "./Login";
 import { Register } from "./Register";
 
-import '/Users/anoushkamakkad/201-project/group-code/roomiez_frontend/my-react-app/src/pages/loginApp.css';
+import './loginApp.css';
 
 export function App() {
   const [currentForm, setCurrentForm] = useState('login');

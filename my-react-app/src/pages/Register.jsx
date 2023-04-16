@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import '/Users/anoushkamakkad/201-project/group-code/roomiez_frontend/my-react-app/src/pages/loginApp.css';
-import '/Users/anoushkamakkad/201-project/group-code/roomiez_frontend/my-react-app/src/pages/loginApp.js';
+import './loginApp.css';
+import './loginApp.js';
 
 export const Register = (props) => {
     const [email, setEmail] = useState('');

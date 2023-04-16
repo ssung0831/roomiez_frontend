@@ -11,7 +11,7 @@
     z-index: 1;
     /* rest of the styles */
   }
-  .login{
+  .loginSquare{
     position:absolute;
     background-color: rgba(238, 228, 241, 0.969);
     opacity: 0.8;
@@ -74,7 +74,7 @@ body {
     border-radius: 12px;
     transition-duration: 0.4s;
     width: 60%; /* set the width to 50% of the parent container */
-    transform: translate(0, 900%);
+    transform: translate(0, 750%);
   }
    
    .btn2:focus, .btn2:hover {

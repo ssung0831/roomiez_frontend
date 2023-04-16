@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import '/Users/anoushkamakkad/201-project/group-code/roomiez_frontend/my-react-app/src/pages/loginApp.css';
+import './loginApp.css';
 
 
 export const Login = (props) => {
