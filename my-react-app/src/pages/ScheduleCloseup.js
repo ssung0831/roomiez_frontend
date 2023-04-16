@@ -9,7 +9,7 @@ export const ScheduleCloseup = () => {
     
     <div className = "container-fluid page-container">
 
-    <a href = "/AddTask">
+    <a href = "/Banner">
    <img src={image} alt="house" style={{ position: 'absolute', top: 8, left: 8, height: '80px', width: '80px', opacity: '80%'}} />
    </a>
 

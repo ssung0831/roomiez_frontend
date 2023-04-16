@@ -1,10 +1,11 @@
 import {AddTask} from "./pages/AddTask";
+import {Banner} from "./pages/Banner";
 import { Route, Link } from "react-router-dom";
 import { Routes } from 'react-router-dom';
 import { ScheduleCloseup } from "./pages/ScheduleCloseup";
-import { Login} from "./pages/Login";
-import { Register} from "./pages/Register";
 
+
+import './App.css';
 
 function App() {
   return (
@@ -13,11 +14,10 @@ function App() {
        <Route path="/AddTask" element={<AddTask />}/>
       <Route path="/AddTask" element={<AddTask />}/>
       <Route path="/ScheduleCloseup" element={<ScheduleCloseup />}/>
-      <Route path="/Login" element={<Login />}/>
-      <Route path="/Register" element={<Register />}/>
       </Routes>
     </div>
   );
 }
+
 
 export default App;
