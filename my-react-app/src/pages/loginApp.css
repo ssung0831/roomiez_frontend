@@ -1,0 +1,89 @@
+
+
+.App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background-image: linear-gradient(100deg, #45326F, #C67B86);
+  font-family: 'Raleway', sans-serif;
+}
+
+.auth-form-container, .login-form, .register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container {
+  padding: 5rem;
+  height: 650px;
+  width:100%;
+  max-width: 600px;
+  background-color: #E4CFDA;
+  border-radius: 50px;
+  margin: 0.5rem;
+}
+
+
+label {
+  /*text-align: left;
+  padding: 0.25rem 0;*/
+  font-size: 1rem;
+  margin-bottom: -7px !important;
+  display: block;
+  padding: 0.25rem 0;
+  text-decoration: none;
+  width:100%;
+  text-align:left;
+}
+
+
+input{
+  margin: 0.7rem 0;
+  padding: 0.8rem;
+  border: none;
+  min-width: 320px;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background-color: white;
+  padding: 17px;
+  /*creates rounded corners*/
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 320px;
+  color: linear-gradient(100deg, #45326F, #C67B86);
+}
+
+.link-bin {
+  background: none;
+  color: black;
+  text-decoration: underline;
+  font-size: 0.8rem;
+}
+
+.head {
+  margin-bottom:-10px;
+  margin-top:-5px;
+  padding: 0.5rem;
+  font-size: 3.5rem;
+  color: #934C81;
+}
+
+.head2 {
+  margin-bottom:-30px;
+  margin-top:-5px;
+  padding: 0.5rem;
+  font-size: 3.5rem;
+  color: #934C81;
+}
+
+.loginButton {
+  background-image: linear-gradient(100deg, #C67B86, #45326F);
+  color: white;
+  font-size: 1rem;
+}
