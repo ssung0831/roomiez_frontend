@@ -21,7 +21,6 @@ function App() {
       <Route path="/ScheduleCloseup" element={<ScheduleCloseup />}/>
       <Route path = "/Login" element = {<Login />} />
       <Route path = "/Register" element = {<Register />} />
-      <Route path = "/Banner" element = {<Banner />} />
       <Route path = "/Schedule" element = {<Schedule />} />
       <Route path = "/joingroup" element = {<joingroup />} />
       </Routes>
