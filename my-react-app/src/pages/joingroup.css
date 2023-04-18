@@ -1,0 +1,120 @@
+.joingroup {
+    text-align: center;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(99deg, #45326F, #C67B86);
+    font-family: 'Raleway', Verdana, sans-serif;
+  }
+  
+  body {
+    overflow: hidden;
+  }
+  
+  .icon {
+    size:300px;
+  }
+  
+  .MyContainer {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  
+  
+  .circle2 {
+    height: 1000px;
+    width: 1000px;
+    opacity:0.6;
+    border-radius: 50%;
+    background-image: linear-gradient(99deg,#C46186, #4D2D74);
+    position:relative;
+    bottom:200px;
+    right:450px;
+   
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+
+  
+  .code-boxes1 {
+    margin-top: 30px;
+    background-color: #D1C6D6;
+    border-radius: 70px;
+    color:#a8729b;
+    font-family: 'Raleway', Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 35px;
+    text-shadow: 2px 4px 4px #bfb3be;
+    height: 200px;
+    padding: 12px;
+    margin-left:auto;
+    margin-bottom: 50px;
+    margin-right: auto;
+    width: 400px;
+    display: 'flex';
+    align-items: center;
+    opacity: 0.8;
+  }
+  
+  .code-boxes2 {
+    margin-top:30px;
+    background-color: #D1C6D6;
+    border-radius: 60px;
+    color:#a8729b;
+    font-family: 'Raleway', Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 35px;
+    text-shadow: 2px 4px 4px #bfb3be;
+    height: 200px;
+    padding: 12px;
+    margin-left:auto;
+    margin-bottom: 50px;
+    margin-right: auto;
+    width: 400px;
+    display: 'flex';
+    align-items: center;
+    opacity: 0.8;
+  }
+  
+  input[type=text] {
+    border: none;
+    border-bottom: 2px solid #2C2B5A;
+    background-color: #D1C6D6;
+    color: #2C2B5A;
+    padding: 10px 20px;
+    font-size:30px;
+  }
+  .code-form {
+    border-radius: 4px;
+    background-color: #D1C6D6;
+    padding: 10px 30px;
+    margin:15px;
+    box-sizing: border-box;
+    border: 2px solid #2C2B5A;
+  }
+  
+  .buttonJoinGroup {
+    background-image: linear-gradient(to right, #c07584 0%, #b46b84 51%, #a35982 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    margin:20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .button:hover {
+    background-image: linear-gradient(99deg,#C46186, #4D2D74);
+  }
