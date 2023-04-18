@@ -10,9 +10,14 @@ export const AddTask = () => {
     const[assignTo, setAssignTo] = useState('');
     const [repeat, setRepeat] = useState('daily');
     const [userID, setUserID] = useState(null);
+    // const options = members.map((member) => (
+    //   <option key={member.id} value={member.name}>
+    //     {member.name}
+    //   </option>
+    // ));
 
     function getUserID() {
-      fetch(`/users/${name}`, {
+      fetch(`localhost:8080/user/${name}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
@@ -31,6 +36,7 @@ export const AddTask = () => {
       body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: userID})
       });
     }
+
 
 
 
@@ -62,20 +68,22 @@ export const AddTask = () => {
 </div>
 
 <div class="question form-group">
-  {/* <label for="assignTo"> assign to... </label> */}
+  <label for="assignTo"> assign to... </label>
   <input value={assignTo} onChange={(event) => setAssignTo(event.target.value)} type="assignTo" placeholder = "assign to..." required></input>
+  {/* <select id = "assignTo" name = "assignTo" value = {assignTo} onChange = {(event) => setAssignTo(event.target.value)} style={{ height: '38px', minWidth: '10px', maxWidth: '500px' }}>
+    {options}</select> */}
+
 </div>
 
 <div class="question form-group">
-  {/* <label for="repeat"> repeat: </label> */}
-  <select id="repetition" name="repeat" value={repeat} onChange={(event) => setAssignTo(event.target.value)} style={{ height: '38px', minWidth: '10px', maxWidth: '500px' }}>
+  <label for="repeat"> repeat: </label>
+  <select id="repetition" name="repeat" value={repeat} onChange={(event) => setRepeat(event.target.value)} style={{ width: '500%', height: '38px', minWidth: '10px', maxWidth: '500px' }}>
     <option value="daily">repeat daily</option>
     <option value="weekly">repeat weekly</option>
     <option value="biweekly">repeat biweekly</option>
     <option value="monthly">repeat monthly</option>
   </select>
 </div>
-
         <button type="submit" class="btn3">save</button>
      </form>
      

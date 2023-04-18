@@ -5,24 +5,24 @@ import image2 from './arrow.png';
 
 export const ScheduleCloseup = () => {
   //TODO SET THIS LATER
-  const [taskID, setTaskID] = useState(null);
-  const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [taskName, setTaskName] = useState('');
+  // const [taskID, setTaskID] = useState(null);
+  // const [description, setDescription] = useState('');
+  // const [dueDate, setDueDate] = useState('');
+  // const [taskName, setTaskName] = useState('');
 
-  function getTaskData() {
-    fetch(`/tasks/${taskID}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    });
-    const data = Response.json();
-    console.log(data);
-    setDescription(data["description"]);
-    setDueDate(data["endDate"]);
-    setTaskName(data["name"]);
-  }
+  // function getTaskData() {
+  //   fetch(`/task/${taskID}`, {
+  //     method: 'GET',
+  //     headers: { 'Content-Type': 'application/json' }
+  //   });
+  //   const data = Response.json();
+  //   console.log(data);
+  //   setDescription(data["description"]);
+  //   setDueDate(data["endDate"]);
+  //   setTaskName(data["name"]);
+  // }
 
-  getTaskData();
+  // getTaskData();
 
   return (
     
@@ -38,12 +38,15 @@ export const ScheduleCloseup = () => {
    </a>
    
     <div class="loginSquare">
-    <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold' }}>Task: {taskName}
+    {/* <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold' }}>Task: {taskName} */}
 
-      <div style={{fontSize: '20px', color: '#2C2B5A', fontWeight: 'thin', marginTop: '10px'}}> Status: Due {dueDate} </div>
+    <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold' }}>Task:
+
+      {/* <div style={{fontSize: '20px', color: '#2C2B5A', fontWeight: 'thin', marginTop: '10px'}}> Status: Due {dueDate} </div> */}
+      <div style={{fontSize: '20px', color: '#2C2B5A', fontWeight: 'thin', marginTop: '10px'}}> Status: Due </div>
 
       <div className = "taskDescription">
-        {description}
+        {/* {description} */}
       </div>
 
       <div className = 'buttonname'>
