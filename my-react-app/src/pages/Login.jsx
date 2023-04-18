@@ -21,7 +21,9 @@ export const Login = (props) => {
              <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
              <label htmlFor="password">password</label>
              <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
+             <a href = "/Banner">
              <button className = "loginButton" type="submit">login</button>
+             </a>
         </form> 
         <a href = '/Register' className="link-bin" /*onClick={() => props.onFormSwitch('register')}*/  >Don't have an account? Register here.</a>
         </div>

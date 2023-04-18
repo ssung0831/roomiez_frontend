@@ -5,6 +5,8 @@ import './Banner.css';
 import {AiOutlinePlus} from "react-icons/ai"
 import { useHistory } from 'react-router-dom';
 
+//npm i react-bootstrap
+
 export const Banner = () =>{
     function Box({ children, ...props }) {
         return <div {...props}>{children}</div>
@@ -12,7 +14,7 @@ export const Banner = () =>{
   
     // function Banner() {
     
-        return (
+       return (
             <div className = "container-fluid Banner" style = {{padding:150}}>
                <a href = "/AddTask">
                 <AiOutlinePlus className = "plus" style = {{display: 'flex', color:'#eee', fontSize: '60px'}}/>
@@ -64,9 +66,9 @@ export const Banner = () =>{
                     
                     </Box>
             </div>  
-        );
-    //}
-}
+       );
+    }
+
 
 
 //export default Banner;

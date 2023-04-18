@@ -128,7 +128,7 @@ form {
     resize: vertical;
    }
    
-   .btn {
+   .btn3 {
     color: white;
     background-color: #934C81;
     border: none;
@@ -145,11 +145,11 @@ form {
     
    }
    
-   .btn:focus, .btn:hover {
+   .btn3:focus, .btn:hover {
     color: white;
     background-color: #C67B86;
     box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);
    }
-   .btn:focus {
+   .btn3:focus {
     outline: 0;
    }

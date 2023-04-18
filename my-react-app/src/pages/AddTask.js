@@ -8,12 +8,31 @@ export const AddTask = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const[assignTo, setAssignTo] = useState('');
-    const [repeat, setRepeat] = useState('daily')
+    const [repeat, setRepeat] = useState('daily');
+    const [userID, setUserID] = useState(null);
+
+    function getUserID() {
+      fetch(`/users/${name}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = Response.json();
+      console.log(data);
+      setUserID(data);
+    }
   
     const handleSubmit = (event) => {
+      getUserID();
       event.preventDefault();
-      console.log(event);
+      // console.log(event);
+      fetch('/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: userID})
+      });
     }
+
+
 
   return (
     
@@ -49,7 +68,7 @@ export const AddTask = () => {
 
 <div class="question form-group">
   {/* <label for="repeat"> repeat: </label> */}
-  <select id="repetition" name="repeat" style={{ height: '38px', minWidth: '10px', maxWidth: '500px' }}>
+  <select id="repetition" name="repeat" value={repeat} onChange={(event) => setAssignTo(event.target.value)} style={{ height: '38px', minWidth: '10px', maxWidth: '500px' }}>
     <option value="daily">repeat daily</option>
     <option value="weekly">repeat weekly</option>
     <option value="biweekly">repeat biweekly</option>
@@ -57,7 +76,7 @@ export const AddTask = () => {
   </select>
 </div>
 
-        <button type="submit" class="btn">save</button>
+        <button type="submit" class="btn3">save</button>
      </form>
      
      </div>
