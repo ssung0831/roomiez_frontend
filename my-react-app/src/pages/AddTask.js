@@ -55,7 +55,7 @@ export const AddTask = () => {
     <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold', marginTop: '2%' }}>Add Task</div>
 
 
-    <form onSubmit = {handleSubmit}>
+    <form class="addTaskForm" onSubmit = {handleSubmit}>
 
       <div class="question form-group">
   {/* <label for="name"> task name: </label> */}
