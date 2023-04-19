@@ -6,7 +6,7 @@ import { ScheduleCloseup } from "./pages/ScheduleCloseup";
 import {Login} from "./pages/Login";
 import {Register} from "./pages/Register";
 import {Schedule} from "./pages/Schedule";
-import {joingroup} from "./pages/joingroup";
+import {JoinGroup} from "./pages/JoinGroup";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -22,7 +22,8 @@ function App() {
       <Route path = "/Login" element = {<Login />} />
       <Route path = "/Register" element = {<Register />} />
       <Route path = "/Schedule" element = {<Schedule />} />
-      <Route path = "/joingroup" element = {<joingroup />} />
+      <Route path = "/JoinGroup" element = {<JoinGroup />} />
+      <Route path = "/Banner" element = {<Banner />} />
       </Routes>
     </div>
   );

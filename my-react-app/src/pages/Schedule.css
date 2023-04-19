@@ -5,6 +5,9 @@
     justify-content: center;
     background-image: linear-gradient(99deg, #3e306d, #aa5e82);
     font-family: 'Raleway';
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
   }
   
   .schedule {
@@ -21,7 +24,7 @@
   }
   
   .roomieName {
-    font-family: 'Raleway', Verdana, sans-serif;
+    font-family: 'Raleway', sans-serif;
     color:white;
   }
   
@@ -38,7 +41,7 @@
     background-color: #D1C6D6;
     border-radius: 40px;
     color:#a8729b;
-    height: 125px;
+    height: 150px;
     width: 225px;
     opacity: 0.8;
     border: none;

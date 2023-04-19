@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import './Banner.css';
 import {AiOutlinePlus} from "react-icons/ai"
-import { useHistory } from 'react-router-dom';
+//import { useHistory } from 'react-router-dom';
 
 //npm i react-bootstrap
 
@@ -16,7 +16,7 @@ export const Banner = () =>{
     
        return (
             <div className = "container-fluid Banner" style = {{padding:150}}>
-               <a href = "/AddTask">
+               <a href = "/JoinGroup">
                 <AiOutlinePlus className = "plus" style = {{display: 'flex', color:'#eee', fontSize: '60px'}}/>
                 </a>
                 
@@ -39,7 +39,7 @@ export const Banner = () =>{
 
                     <div className = "align-right">
                         <p>
-                        <Button className = "Button" href = "/ScheduleCloseup" variant="light" style={{backgroundColor: '#eee',
+                        <Button className = "Button" href = "/Schedule" variant="light" style={{backgroundColor: '#eee',
                             borderRadius: 4,
                             color: '#37306B',
                             padding: 50,

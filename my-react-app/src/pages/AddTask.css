@@ -72,7 +72,7 @@ body {
   overflow: hidden;
  }
    
-form {
+.addTaskForm {
     padding: 2rem;
     margin-top: 2rem;
     margin-right: auto;

@@ -13,8 +13,10 @@ export const Schedule = () => {
 
 
   return (
-    <div className="Schedule">
-     <FaHouseUser style={{ fontSize: '50px', color: '#D1C6D6', display: 'flex', justifyContent: 'flex-start', padding: '12px' }} /> 
+    <div className="container-fluid Schedule">
+      <a href = "/Banner">
+     <FaHouseUser style={{ fontSize: '65px', color: '#D1C6D6', display: 'flex', justifyContent: 'flex-start', padding: '12px' }} />
+     </a> 
     <div className="schedule">
       <div className="Roommate">
         <h2 className='roomieName'>Roommate 1</h2>
