@@ -51,7 +51,7 @@ export const Banner = () =>{
                     
                     <div className = "align-right">
                         <p>
-                        <Button className = "Button" variant="light" style={{backgroundColor: '#eee',
+                        <Button className = "Button" href = "/Remove" variant="light" style={{backgroundColor: '#eee',
                             borderRadius: 4,
                             color: '#37306B',
                             padding: 50,

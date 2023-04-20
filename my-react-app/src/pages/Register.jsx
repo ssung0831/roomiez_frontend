@@ -26,7 +26,7 @@ export const Register = (props) => {
              <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="password" id="********" name="password" />
              <button className = "loginButton" type="submit">login</button>
         </form> 
-        <a href = '/Login' className="link-bin" /*onClick={() => props.onFormSwitch('login')}*/ >Already have an account? Login here.</a>
+        <a href = '/' className="link-bin" /*onClick={() => props.onFormSwitch('login')}*/ >Already have an account? Login here.</a>
         </div>
     )
 }
