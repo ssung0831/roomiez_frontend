@@ -16,7 +16,6 @@ function App() {
   return (
     <div className = "App">
       <Routes     >
-       <Route path="/AddTask" element={<AddTask />}/>
       <Route path="/AddTask" element={<AddTask />}/>
       <Route path="/ScheduleCloseup" element={<ScheduleCloseup />}/>
       <Route path = "/Login" element = {<Login />} />
