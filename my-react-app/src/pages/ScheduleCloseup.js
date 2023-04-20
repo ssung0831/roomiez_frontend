@@ -11,12 +11,14 @@ export const ScheduleCloseup = () => {
   // const [taskName, setTaskName] = useState('');
 
   // function getTaskData() {
-  //   fetch(`/task/${taskID}`, {
+  //   fetch(`http://localhost:8080/tasks/${taskID}`, {
   //     method: 'GET',
   //     headers: { 'Content-Type': 'application/json' }
   //   });
-  //   const data = Response.json();
+  //   .then(response => response.json())
+  //   .then(data => {
   //   console.log(data);
+  // });
   //   setDescription(data["description"]);
   //   setDueDate(data["endDate"]);
   //   setTaskName(data["name"]);
