@@ -5,64 +5,126 @@ import myImage from './circle.png';
 
 export const AddTask = () => {
 
+  var loggedIn = false;
+  var userId = "-1";
+
+//read in cookie on open
+window.onload = function getID() {
+    //check if user is logged in
+
+    const name = 'userId';
+    console.log(document.cookie);
+
+    console.log(getCookie(name));
+
+    const newId = getCookie(name)
+    if (getCookie(name) !== ""){
+        loggedIn = true;
+        userId = newId;
+    }
+
+    //track cookie
+    console.log(loggedIn);
+    console.log(userId);
+}
+
+//read cookieValue
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const[assignTo, setAssignTo] = useState('');
     const [repeat, setRepeat] = useState('daily');
     const [userID, setUserID] = useState(null);
-    const [members, setMembers] = useState(null);
+    const [groupID, setGroupID] = useState(null);
+    const members = new Map();
 
-    const options = members.map((member) => (
-      <option key={member.id} value={member.name}>
-        {member.name}
-      </option>
-    ));
+    // const options = members.map((member) => (
+    //   <option key={member.username} value={member.name}>
+    //     {username.name}
+    //   </option>
+    // ));
 
-    function getUserID() {
-      fetch(`http://localhost:8080/user/${assignTo}`, {
+    // function getUserID() {
+    //   fetch(`http://localhost:8080/user/${assignTo}`, {
+    //     method: 'GET',
+    //     headers: { 'Content-Type': 'application/json' },
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data);
+    //   });
+    //   setUserID(data);
+    //   console.log(userID);
+    // }
+
+    function getGroupId() {
+      fetch(`http://localhost:8080/user/` + userId, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        console.log(data.groupID);
+        setGroupID(data.groupID);
       });
-      console.log(userID);
-
-      setUserID(data);
     }
 
-    function getUsernames() {
-      fetch(`http://localhost:8080/group/${groupID}/users`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
-      console.log(userID);
+    //     data.users.forEach(user => {
+    //       members.set(user.name, user.username);
+    //     });
+    //   });
+    //   console.log(members);
+    // }
 
-      setMembers(data);
-    }
+    // function getUsernames() {
+    //   fetch(`http://localhost:8080/groups/${groupID}/users`, {
+    //     method: 'GET',
+    //     headers: { 'Content-Type': 'application/json' },
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data);
+
+    //     data.users.forEach(user => {
+    //       members.set(user.name, user.username);
+    //     });
+    //   });
+    //   console.log(members);
+    // }
   
     const handleSubmit = (event) => {
       event.preventDefault();
       console.log(event);
-      getUserID();
-      fetch('http://localhost:8080/tasks/addTask', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: "", repeatTask: repeat})
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
+      // getUserID();
+      // fetch('http://localhost:8080/tasks/addTask', {
+      // method: 'POST',
+      // headers: { 'Content-Type': 'application/json' },
+      // body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: "", repeatTask: repeat})
+      // })
+      // .then(response => response.json())
+      // .then(data => {
+      //   console.log(data);
+      // });
     }
 
 
-
+   // getUsernames();
 
   return (
     
