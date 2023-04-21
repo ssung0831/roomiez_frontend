@@ -10,59 +10,60 @@ export const AddTask = () => {
     const[assignTo, setAssignTo] = useState('');
     const [repeat, setRepeat] = useState('daily');
     const [userID, setUserID] = useState(null);
-    const [members, setMembers] = useState(null);
+    const members = new Map();
 
-    const options = members.map((member) => (
-      <option key={member.id} value={member.name}>
-        {member.name}
-      </option>
-    ));
+    // const options = members.map((member) => (
+    //   <option key={member.username} value={member.name}>
+    //     {username.name}
+    //   </option>
+    // ));
 
-    function getUserID() {
-      fetch(`http://localhost:8080/user/${assignTo}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
-      console.log(userID);
+    // function getUserID() {
+    //   fetch(`http://localhost:8080/user/${assignTo}`, {
+    //     method: 'GET',
+    //     headers: { 'Content-Type': 'application/json' },
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data);
+    //   });
+    //   setUserID(data);
+    //   console.log(userID);
+    // }
 
-      setUserID(data);
-    }
+    // function getUsernames() {
+    //   fetch(`http://localhost:8080/groups/${groupID}/users`, {
+    //     method: 'GET',
+    //     headers: { 'Content-Type': 'application/json' },
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data);
 
-    function getUsernames() {
-      fetch(`http://localhost:8080/group/${groupID}/users`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
-      console.log(userID);
-
-      setMembers(data);
-    }
+    //     data.users.forEach(user => {
+    //       members.set(user.name, user.username);
+    //     });
+    //   });
+    //   console.log(members);
+    // }
   
     const handleSubmit = (event) => {
       event.preventDefault();
       console.log(event);
-      getUserID();
-      fetch('http://localhost:8080/tasks/addTask', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: "", repeatTask: repeat})
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
+      // getUserID();
+      // fetch('http://localhost:8080/tasks/addTask', {
+      // method: 'POST',
+      // headers: { 'Content-Type': 'application/json' },
+      // body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: "", repeatTask: repeat})
+      // })
+      // .then(response => response.json())
+      // .then(data => {
+      //   console.log(data);
+      // });
     }
 
 
-
+   // getUsernames();
 
   return (
     
