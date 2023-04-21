@@ -4,12 +4,14 @@ import image from './home.png';
 import image2 from './arrow.png';
 
 export const ScheduleCloseup = () => {
-  const taskID = window.location.href.split("/") [2];
+  
 
-  // const [taskID, setTaskID] = useState(null);
+  const [taskID, setTaskID] = useState(window.location.href.split("/") [4]);
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [taskName, setTaskName] = useState('');
+
+  // setTaskID(window.location.href.split("/") [4]);
 
   // function getTaskData() {
   //   fetch(`http://localhost:8080/tasks/${taskID}`, {
@@ -25,21 +27,21 @@ export const ScheduleCloseup = () => {
   //   setTaskName(data["name"]);
   // }
 
- // getTaskData();
+//  getTaskData();
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    fetch('http://localhost:8080/groups/email', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({taskID: taskID })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    });
+    // fetch('http://localhost:8080/groups/email', {
+    // method: 'POST',
+    // headers: { 'Content-Type': 'application/json' },
+    // body: JSON.stringify({taskID: taskID })
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   console.log(data);
+    // });
   }
 
   return (
@@ -51,7 +53,7 @@ export const ScheduleCloseup = () => {
    <img src={image} alt="house" style={{ position: 'absolute', top: 8, left: 8, height: '80px', width: '80px', opacity: '80%'}} />
    </a>
 
-   <a href = "/AddTask">
+   <a href = "/Schedule">
    <img src={image2} alt="arrow" style={{ position: 'absolute', top: 16, right: 8, height: '50px', width: '50px', opacity: '80%' }} />
    </a>
    

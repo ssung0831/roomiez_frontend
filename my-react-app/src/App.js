@@ -19,7 +19,7 @@ function App() {
       <Routes     >
        <Route path="/AddTask" element={<AddTask />}/>
       <Route path="/AddTask" element={<AddTask />}/>
-      <Route path="/ScheduleCloseup" element={<ScheduleCloseup />}/>
+      <Route path="/ScheduleCloseup/:taskID" element={<ScheduleCloseup />}/>
       <Route path = "/" element = {<Login />} />
       <Route path = "/Register" element = {<Register />} />
       <Route path = "/Schedule" element = {<Schedule />} />
