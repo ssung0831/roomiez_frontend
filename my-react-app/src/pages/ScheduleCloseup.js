@@ -4,17 +4,18 @@ import image from './home.png';
 import image2 from './arrow.png';
 
 export const ScheduleCloseup = () => {
-  //TODO SET THIS LATER
+  const taskID = window.location.href.split("/") [2];
+
   // const [taskID, setTaskID] = useState(null);
-  // const [description, setDescription] = useState('');
-  // const [dueDate, setDueDate] = useState('');
-  // const [taskName, setTaskName] = useState('');
+  const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState('');
+  const [taskName, setTaskName] = useState('');
 
   // function getTaskData() {
   //   fetch(`http://localhost:8080/tasks/${taskID}`, {
   //     method: 'GET',
   //     headers: { 'Content-Type': 'application/json' }
-  //   });
+  //   })
   //   .then(response => response.json())
   //   .then(data => {
   //   console.log(data);
@@ -24,7 +25,22 @@ export const ScheduleCloseup = () => {
   //   setTaskName(data["name"]);
   // }
 
-  // getTaskData();
+ // getTaskData();
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(event);
+    fetch('http://localhost:8080/groups/email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({taskID: taskID })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    });
+  }
 
   return (
     
