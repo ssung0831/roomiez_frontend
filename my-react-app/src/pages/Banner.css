@@ -16,6 +16,18 @@
   font-family: 'Raleway', sans-serif;
 }
 
+.flexing{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Roomates{
+  color: #eee;
+  /* display: flex !important;
+  justify-content: left !important; */
+}
+
 
 .plus{
   position: absolute;
