@@ -3,6 +3,11 @@ import './ScheduleCloseup.css';
 import image from './home.png';
 import image2 from './arrow.png';
 import Button from 'react-bootstrap/Button'
+// import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+
+
+
 
 export const ScheduleCloseup = () => {
   
@@ -14,7 +19,6 @@ export const ScheduleCloseup = () => {
   const [assignTo, setAssignTo] = useState('');
 
 //  setTaskID(window.location.href.split("/") [4]);
-
   function getTaskData() {
     fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/tasks/${taskID}`, {
       method: 'GET',
@@ -33,8 +37,13 @@ export const ScheduleCloseup = () => {
 
  getTaskData();
 
+ const [showModal, setShowModal] = useState(false);
+ const handleModal = () => {
+  setShowModal(!showModal);
+};
 
-  const handleSubmit = (event) => {
+
+  const handleRemindRoommate = (event) => {
     event.preventDefault();
     console.log(event);
     console.log("tyler2");
@@ -45,6 +54,20 @@ export const ScheduleCloseup = () => {
     .then(response => response.json())
     .then(data => {
       console.log("tyler");
+    });
+  }
+
+  const handleDeleteTask = (event) => {
+    event.preventDefault();
+    console.log(event);
+    console.log("delete task");
+    fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/tasks/${taskID}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("task deleted");
     });
   }
 
@@ -70,11 +93,18 @@ export const ScheduleCloseup = () => {
         {description}
       </div>
 
-      <form onSubmit={handleSubmit}>
-      <div className = 'buttonname'>
-      <Button type="submit" className="btn2">remind roommate</Button>
-      </div>
+      <div className="button-container">
+      <form onSubmit={handleRemindRoommate}>
+
+      <Button type="submit" className="btn2" onClick={handleModal}>remind roommate</Button>
+
       </form>
+      <form onSubmit={handleDeleteTask}>
+
+      <Button type="submit" className="btn2" onClick={handleModal}>complete task</Button>
+
+      </form>
+    </div>
     
     
     </div>
@@ -82,6 +112,15 @@ export const ScheduleCloseup = () => {
 
    
      </div>
+
+     <Modal show={showModal} onHide={handleModal} style={{backgroundColor: 'transparent'}}>
+  <Modal.Header closeButton>
+    <Modal.Title>Success</Modal.Title>
+  </Modal.Header>
+  <Modal.Body style={{height: '200px'}}>
+   we have successfully processed your request
+  </Modal.Body>
+</Modal>
      </div>
   )
 }

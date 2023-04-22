@@ -15,7 +15,7 @@ export const Login = (props) => {
         //prevents page from getting reloaded and losing our state
         
         e.preventDefault();
-        fetch('http://localhost:8080/login', {
+        fetch('http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body:JSON.stringify({username: email, password: pass})

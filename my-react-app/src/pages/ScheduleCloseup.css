@@ -73,8 +73,8 @@ body {
     font-size: 20px !important;
     border-radius: 12px !important;
     transition-duration: 0.4s !important;
-    width: 60% !important; 
-    transform: translate(0, 750%) !important;
+    width: 80% !important; 
+    transform: translate(0, 525%) !important;
   }
    
    .btn2:focus, .btn2:hover {
@@ -85,6 +85,24 @@ body {
    .btn2:focus {
     outline: 0 !important;
    }
+
+   .button-container {
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 20px; */
+  }
+  
+  /* .btn-remind {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .btn-delete {
+    padding: 10px 20px;
+    border: 1px solid #2C2B5A;
+    border-radius: 5px;
+    cursor: pointer;
+  } */
 
    .taskDescription{
     border: 1px solid black; 

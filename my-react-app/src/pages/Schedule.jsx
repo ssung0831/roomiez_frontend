@@ -4,6 +4,7 @@ import { FaHouseUser} from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
+import { usePollingEffect } from './utils';
 
 
 
@@ -60,7 +61,7 @@ function getCookie(cname) {
 }
 
 function getGroupId() {
-  fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + 1, {
+  fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + userID, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   })
@@ -71,28 +72,49 @@ function getGroupId() {
   });
 }
 
-useEffect(() => {
-  if (groupID !== null) {
-    getRoommates();
-  }
-}, [groupID]);
+// useEffect(() => {
+//   if (groupID !== null) {
+//     getRoommates();
+//   }
+// }, [groupID]);
 
-function getRoommates() {
-  fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/userTasks`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    setRoommates(data.roommates);
-  });
-}
+// function getRoommates() {
+//   fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/userTasks`, {
+//     method: 'GET',
+//     headers: { 'Content-Type': 'application/json' },
+//   })
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data);
+//     setRoommates(data.roommates);
+//   });
+// }
+
+
+  usePollingEffect(
+      () => {
+        if(groupID != null){
+          fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/userTasks`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            setRoommates(data.roommates);
+          })
+        }
+      },
+    [groupID],
+    {interval: 3000}
+  )
+
+
 
 getGroupId();
 
     return (
-      <div className="container-fluid Schedule">
+      <div className="container-fluid Schedule" style={{height: '500px', overflow: 'scroll'}}>
         <a href="/Banner">
           <FaHouseUser style={{ fontSize: '75px', color: '#D1C6D6', display: 'flex', justifyContent: 'flex-start', padding: '12px' }} />
         </a>
