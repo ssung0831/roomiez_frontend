@@ -13,6 +13,7 @@ export const Login = (props) => {
 
     const handleSubmit = (e) => {
         //prevents page from getting reloaded and losing our state
+        
         e.preventDefault();
         fetch('http://localhost:8080/login', {
             method: 'POST',
