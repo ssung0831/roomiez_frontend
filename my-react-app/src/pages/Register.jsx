@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Button from 'react-bootstrap/Button'
+import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 import './loginApp.css';
 import './loginApp.js';
@@ -9,6 +10,7 @@ export const Register = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         //prevents page from getting reloaded and losing our state
@@ -24,6 +26,7 @@ export const Register = (props) => {
             .then (response => response.json())
             .then (data => {
                 document.cookie = "username=" + data.userid;
+                navigate('/Banner');
         
             })
     }
@@ -39,7 +42,7 @@ export const Register = (props) => {
              <input className = "inputLogin" value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" required/>
              <label className="labelLogin" htmlFor="password">password</label>
              <input className = "inputLogin" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="password" id="********" name="password" required/>
-             <Button className = "loginButton" type="submit" /*href="/Banner" */>login</Button>
+             <Button className = "loginButton" type="submit">login</Button>
         </form> 
         <a href = '/' className="link-bin" /*onClick={() => props.onFormSwitch('login')}*/ >Already have an account? Login here.</a>
         </div>
