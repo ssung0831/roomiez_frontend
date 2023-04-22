@@ -30,10 +30,10 @@ export const Remove = () => {
       getUserID();
       event.preventDefault();
       // console.log(event);
-      fetch('/tasks', {
+      fetch('/Remove', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: userID})
+      body: JSON.stringify({ name: name})
       });
     }
 
