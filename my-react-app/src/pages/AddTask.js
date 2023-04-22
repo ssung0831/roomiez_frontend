@@ -60,6 +60,7 @@ function getCookie(cname) {
     const [groupID, setGroupID] = useState(null);
     const members = new Map();
     const [dropdownOptions, setDropdownOptions] = useState([]);
+    const [first, setFirst] = useState('');
 
       /*put in name of assignee to get their id GOOD*/
     //   function getGroupId(){
@@ -121,6 +122,7 @@ function getCookie(cname) {
         console.log("poop" + initialAssignTo);
        // const[assignTo, setAssignTo] = useState(initialAssignTo);
        setAssignTo(initialAssignTo);
+       setFirst(initialAssignTo);
     
       });
     }, [groupID]);
@@ -168,6 +170,11 @@ function getCookie(cname) {
         console.log(assigneeID);
         console.log(repeat);
         console.log(data);
+
+        setName('');
+        setDescription('');
+        setAssignTo(first);
+        setRepeat('daily');
       });
     }
 
@@ -212,7 +219,7 @@ function getCookie(cname) {
 </div>
 
 <div class="question form-group">
-  <label for="repeat"> due: </label>
+  <label for="repeat"> due in: </label>
   <select id="repetition" name="repeat" value={repeat} onChange={(event) => setRepeat(event.target.value)} style={{ width: '500%', height: '38px', minWidth: '10px', maxWidth: '500px' }}>
     <option value="daily">one day</option>
     <option value="weekly">one week</option>
