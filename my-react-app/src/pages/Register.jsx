@@ -25,7 +25,7 @@ export const Register = (props) => {
         
             .then (response => response.json())
             .then (data => {
-                document.cookie = "username=" + data.userID;
+                document.cookie = "userId=" + data.id;
                 navigate('/Banner');
                 
         
