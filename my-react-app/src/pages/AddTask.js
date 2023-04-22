@@ -30,7 +30,7 @@ window.onload = function getID() {
 
     //track cookie
     console.log(loggedIn);
-    setUserID(userID);
+    setUserID(userId);
     console.log(userId);
 }
 
@@ -75,17 +75,17 @@ function getCookie(cname) {
     // }
 
     /*put in user's id to get their group- this will create the dropdown GOOD */
-    useEffect(() => {
+   // useEffect(() => {
       fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + userID, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data.groupID);
+        console.log("groupid=" + data.groupID);
         setGroupID(data.groupID);
       });
-    }, []);
+  //  }, []);
 
 
     /*once i have the group id, i canx get all the usernames and put them in a dropdown GOOD */
