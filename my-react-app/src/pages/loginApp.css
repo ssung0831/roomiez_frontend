@@ -27,20 +27,20 @@
 }
 
 
-label {
+.labelLogin {
   /*text-align: left;
   padding: 0.25rem 0;*/
-  font-size: 1rem;
+  font-size: 1rem !important;
   margin-bottom: -7px !important;
   display: block;
-  padding: 0.25rem 0;
+  padding: 0.25rem 0 !important;
   text-decoration: none;
   width:100%;
   text-align:left;
 }
 
 
-input{
+.inputLogin{
   margin: 0.7rem 0;
   padding: 0.8rem;
   border: none;
@@ -48,16 +48,16 @@ input{
   border-radius: 10px;
 }
 
-button {
+/*button {
   border: none;
   background-color: white;
   padding: 17px;
-  /*creates rounded corners*/
+  creates rounded corners
   border-radius: 10px;
   cursor: pointer;
   min-width: 320px;
   color: linear-gradient(100deg, #45326F, #C67B86);
-}
+}*/
 
 .link-bin {
   background: none;
@@ -66,7 +66,7 @@ button {
   font-size: 0.8rem;
 }
 
-.head {
+.headLogin {
   margin-bottom:-10px;
   margin-top:-5px;
   padding: 0.5rem;
@@ -74,16 +74,22 @@ button {
   color: #934C81;
 }
 
-.head2 {
-  margin-bottom:-30px;
+.headRegister {
+  margin-bottom:15px;
   margin-top:-5px;
   padding: 0.5rem;
   font-size: 3.5rem;
-  color: #934C81;
+  color: #934C81 !important;
 }
 
 .loginButton {
   background-image: linear-gradient(100deg, #C67B86, #45326F);
   color: white;
   font-size: 1rem;
+  min-width: 320px;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  padding: 12px !important;
+  margin-bottom:30px;
 }
