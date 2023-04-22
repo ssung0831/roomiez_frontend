@@ -17,7 +17,7 @@ export const Register = (props) => {
         e.preventDefault();
         //console.log("email " + email);
         //registerUser(email, pass, name);
-            fetch('http://localhost:8080/user/registration', {
+            fetch('http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/registration', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({username: email, password: pass, name: name})

@@ -1,52 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddTask.css';
 import image from './home.png';
 import myImage from './circle.png';
+import { usePollingEffect } from './utils';
+import { Modal } from 'react-bootstrap';
+
 
 export const AddTask = () => {
 
   const [userID, setUserID] = useState(null);
 
-//   var loggedIn = false;
-//   var userId = "-1";
+  var loggedIn = false;
+  var userId = "-1";
 
-// //read in cookie on open
-// window.onload = function getID() {
-//     //check if user is logged in
+//read in cookie on open
+window.onload = function getID() {
+    //check if user is logged in
 
-//     const name = 'userId';
-//     console.log(document.cookie);
+    const name = 'userId';
+    console.log(document.cookie);
 
-//     console.log(getCookie(name));
+    console.log(getCookie(name));
 
-//     const newId = getCookie(name)
-//     if (getCookie(name) !== ""){
-//         loggedIn = true;
-//         userId = newId;
-//     }
+    const newId = getCookie(name)
+    if (getCookie(name) !== ""){
+        loggedIn = true;
+        userId = newId;
+    }
 
-//     //track cookie
-//     console.log(loggedIn);
-//     setUserID(userId);
-//     console.log(userId);
-// }
+    //track cookie
+    console.log(loggedIn);
+    setUserID(userID);
+    console.log(userId);
+}
 
-// //read cookieValue
-// function getCookie(cname) {
-//     let name = cname + "=";
-//     let decodedCookie = decodeURIComponent(document.cookie);
-//     let ca = decodedCookie.split(';');
-//     for(let i = 0; i <ca.length; i++) {
-//         let c = ca[i];
-//         while (c.charAt(0) === ' ') {
-//             c = c.substring(1);
-//         }
-//         if (c.indexOf(name) === 0) {
-//             return c.substring(name.length, c.length);
-//         }
-//     }
-//     return "";
-// }
+//read cookieValue
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
 
     const [name, setName] = useState('');
@@ -59,21 +62,21 @@ export const AddTask = () => {
     const [dropdownOptions, setDropdownOptions] = useState([]);
 
       /*put in name of assignee to get their id GOOD*/
-    function getUserID() {
-      fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/getId/${assignTo}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then(response => response.json())
-      .then(data => {
-      setAssigneeID(data);
-      console.log("hi"+ assigneeID);
-      });
-    }
+    //   function getGroupId(){
+    //   fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + 1, {
+    //     method: 'GET',
+    //     headers: { 'Content-Type': 'application/json' },
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data.groupID);
+    //     setGroupID(data.groupID);
+    //   });
+    // }
 
     /*put in user's id to get their group- this will create the dropdown GOOD */
-    function getGroupId() {
-      fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + 1, {
+    useEffect(() => {
+      fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + userID, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -82,11 +85,12 @@ export const AddTask = () => {
         console.log(data.groupID);
         setGroupID(data.groupID);
       });
-  
-    }
+    }, []);
 
-    /*once i have the group id, i can get all the usernames and put them in a dropdown GOOD */
-    function getUsernames() {
+
+    /*once i have the group id, i canx get all the usernames and put them in a dropdown GOOD */
+  //  function getUsernames() {
+    useEffect(() => {
       fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/users`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -106,11 +110,43 @@ export const AddTask = () => {
           <option key={username} value={username}>
             {members.get(username)}
           </option>
+            
         ));
 
         setDropdownOptions(options);
+
+        console.log("shit");
+        console.log(members);
+        const initialAssignTo = [...members.keys()][0];
+        console.log("poop" + initialAssignTo);
+       // const[assignTo, setAssignTo] = useState(initialAssignTo);
+       setAssignTo(initialAssignTo);
+    
+      });
+    }, [groupID]);
+
+   
+ //   getGroupId();
+ //   getUsernames();
+
+ 
+    function getUserID() {
+      console.log(assignTo);
+      fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/getId/${assignTo}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(response => response.json())
+      .then(data => {
+      setAssigneeID(data);
+      console.log("hi"+ assigneeID);
       });
     }
+
+    const [showModal, setShowModal] = useState(false);
+    const handleModal = () => {
+     setShowModal(!showModal);
+   };
   
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -126,13 +162,18 @@ export const AddTask = () => {
       .then(response => response.json())
       .then(data => {
         console.log("TYLER");
+        console.log(name);
+        console.log(description);
+        console.log(assignTo);
+        console.log(assigneeID);
+        console.log(repeat);
         console.log(data);
       });
     }
 
 
-    getGroupId();
-    getUsernames();
+    // getGroupId();
+    // getUsernames();
 
   return (
     
@@ -171,19 +212,31 @@ export const AddTask = () => {
 </div>
 
 <div class="question form-group">
-  <label for="repeat"> repeat: </label>
+  <label for="repeat"> due: </label>
   <select id="repetition" name="repeat" value={repeat} onChange={(event) => setRepeat(event.target.value)} style={{ width: '500%', height: '38px', minWidth: '10px', maxWidth: '500px' }}>
-    <option value="daily">repeat daily</option>
-    <option value="weekly">repeat weekly</option>
-    <option value="biweekly">repeat biweekly</option>
-    <option value="monthly">repeat monthly</option>
+    <option value="daily">one day</option>
+    <option value="weekly">one week</option>
+    <option value="biweekly">two weeks</option>
+    <option value="monthly">one month</option>
   </select>
 </div>
-        <button type="submit" className="btn3">save</button>
+        <button type="submit" className="btn3" onClick = {handleModal}>save</button>
      </form>
      
      </div>
+
+
+     <Modal show={showModal} onHide={handleModal} style={{backgroundColor: 'transparent'}}>
+  <Modal.Header closeButton>
+    <Modal.Title>Success</Modal.Title>
+  </Modal.Header>
+  <Modal.Body style={{height: '200px'}}>
+   we have successfully processed your request
+  </Modal.Body>
+</Modal>
      </div>
+
+     
   )
 }
 
