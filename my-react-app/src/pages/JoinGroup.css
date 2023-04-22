@@ -12,11 +12,20 @@
   
   body {
     overflow: hidden;
-  }
+  } 
   
   .icon {
     size:1.2rem;
   }
+
+  .message {
+    font-family: 'Raleway', Verdana, sans-serif;
+    color: #2C2B5A;
+    font-size: small;
+
+  }
+
+  
 
   .iconflex {
     display: flex;
@@ -26,12 +35,16 @@
   
   .MyContainer {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: space-around;
+    align-self: center;
+    margin-top:170px;
   }
   
-  
+
+
+ 
   
   .circle2 {
     height: 1000px;
@@ -40,8 +53,8 @@
     border-radius: 50%;
     background-image: linear-gradient(99deg,#C46186, #4D2D74);
     position:relative;
-    bottom:180px;
-    right:625px;
+    bottom:25px;
+    right:500px;
    
   }
   
@@ -78,6 +91,12 @@
     margin-top:5px;
     text-align: center;
   }
+
+  .codeFormat {
+    color: #2C2B5A;
+    font-family: 'Raleway', Verdana, sans-serif;
+    margin:8px;
+  }
   
   .code-boxes2 {
     margin-top:30px;
@@ -104,9 +123,10 @@
     border-bottom: 2px solid #2C2B5A;
     background-color: #D1C6D6;
     color: #2C2B5A;
+    display: flex;
     padding: 10px 20px;
     font-size:20px;
-    margin:10px;
+    margin: auto;
   }
   .code {
     border-radius: 4px;
