@@ -1,7 +1,7 @@
 // import React from 'react';
 //import { Component } from 'react';
 import { FaHouseUser} from 'react-icons/fa';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 
@@ -14,109 +14,86 @@ import './Schedule.css';
 
 export const Schedule = () => {
 
-  // const [roommates, setRoommates] = useState([]);
+  const [userID, setUserID] = useState(null);
+  const [groupID, setGroupID] = useState(null);
+  const [roommates, setRoommates] = useState({});
 
-  // function getRoommates() {
-  //   fetch(`http://localhost:8080/user/${assignTo}`, {
-  //     method: 'GET',
-  //     headers: { 'Content-Type': 'application/json' },
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data);
-  //   });
-  //   setRoommates(data);
-  //   console.log(userID);
-  // }
+  var loggedIn = false;
+  var userId = "-1";
 
-  const {roommates} = {
-    "roommates": {
-        "Kory": [
-            {
-                "endDate": "01/02/1970",
-                "repeat": "weekly",
-                "groupID": 3,
-                "name": "Task 1",
-                "progress": 0,
-                "description": "This is a dummy task.",
-                "startTime": "2:00pm",
-                "ID": 1,
-                "endTime": "5:00pm",
-                "assigneeID": 1,
-                "startDate": "01/01/1970"
-            },
-            {
-                "endDate": "01/02/1970",
-                "repeat": "weekly",
-                "groupID": 3,
-                "name": "Task 2",
-                "progress": 1,
-                "description": "This is a dummy task.",
-                "startTime": "2:00pm",
-                "ID": 2,
-                "endTime": "5:00pm",
-                "assigneeID": 1,
-                "startDate": "01/01/1970"
-            }
-        ],
-        "Chely": [
-            {
-                "endDate": "01/02/1970",
-                "repeat": "weekly",
-                "groupID": 3,
-                "name": "Task 3",
-                "progress": 0,
-                "description": "This is a dummy task.",
-                "startTime": "2:00pm",
-                "ID": 3,
-                "endTime": "5:00pm",
-                "assigneeID": 2,
-                "startDate": "01/01/1970"
-            }
-        ],
-        "Tyler": [
-          {
-              "endDate": "01/02/1970",
-              "repeat": "weekly",
-              "groupID": 3,
-              "name": "Task 1",
-              "progress": 0,
-              "description": "This is a dummy task.",
-              "startTime": "2:00pm",
-              "ID": 1,
-              "endTime": "5:00pm",
-              "assigneeID": 1,
-              "startDate": "01/01/1970"
-          },
-          {
-              "endDate": "01/02/1970",
-              "repeat": "weekly",
-              "groupID": 3,
-              "name": "Task 2",
-              "progress": 1,
-              "description": "This is a dummy task.",
-              "startTime": "2:00pm",
-              "ID": 2,
-              "endTime": "5:00pm",
-              "assigneeID": 1,
-              "startDate": "01/01/1970"
-          },
-          {
-            "endDate": "01/02/1970",
-            "repeat": "weekly",
-            "groupID": 3,
-            "name": "Task 3",
-            "progress": 0,
-            "description": "This is a dummy task.",
-            "startTime": "2:00pm",
-            "ID": 3,
-            "endTime": "5:00pm",
-            "assigneeID": 2,
-            "startDate": "01/01/1970"
-        }
-      ]
+//read in cookie on open
+window.onload = function getID() {
+    //check if user is logged in
+
+    const name = 'userId';
+    console.log(document.cookie);
+
+    console.log(getCookie(name));
+
+    const newId = getCookie(name)
+    if (getCookie(name) !== ""){
+        loggedIn = true;
+        userId = newId;
     }
-};
+
+    //track cookie
+    console.log(loggedIn);
+    setUserID(userId);
+    console.log(userId);
+}
+
+//read cookieValue
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function getGroupId() {
+  fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + 1, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.groupID);
+    setGroupID(data.groupID);
+  });
+}
+
+useEffect(() => {
+  if (groupID !== null) {
+    getRoommates();
+  }
+}, [groupID]);
+
+function getRoommates() {
+  fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/userTasks`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    setRoommates(data.roommates);
+  });
+}
+
+getGroupId();
+
+
+//  const {roommates} = {"roommates":{"Kory":[{"endDate":"01/02/1970","groupID":3,"repeat":"weekly","name":"Task 1","description":"This is a dummy task.","progress":0,"startTime":"2:00pm","ID":1,"endTime":"5:00pm","assigneeID":1,"startDate":"01/01/1970"},{"endDate":"01/02/1970","groupID":3,"repeat":"weekly","name":"Task 2","description":"This is a dummy task.","progress":1,"startTime":"2:00pm","ID":2,"endTime":"5:00pm","assigneeID":1,"startDate":"01/01/1970"}],"Chely":[{"endDate":"01/02/1970","groupID":3,"repeat":"weekly","name":"Task 3","description":"This is a dummy task.","progress":0,"startTime":"2:00pm","ID":3,"endTime":"5:00pm","assigneeID":2,"startDate":"01/01/1970"}]}};
+
 
     return (
       <div className="container-fluid Schedule">
