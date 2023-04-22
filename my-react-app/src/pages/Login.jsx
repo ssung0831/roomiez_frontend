@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button'
 import './loginApp.css';
 
@@ -6,6 +7,7 @@ import './loginApp.css';
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         //prevents page from getting reloaded and losing our state
@@ -19,6 +21,7 @@ export const Login = (props) => {
         .then (response => response.json())
         .then (data => {
             document.cookie = "username=" + data.userid;
+            navigate('/Banner');
     
         })
     }
@@ -31,7 +34,7 @@ export const Login = (props) => {
              <input className= "inputLogin" value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" required />
              <label className="labelLogin" htmlFor="password">password</label>
              <input  className= "inputLogin" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" required />
-             <Button className = "loginButton" type="submit" href="/Banner" >login</Button>
+             <Button className = "loginButton" type="submit" >login</Button>
         </form> 
         <a href = '/Register' className="link-bin" /*onClick={() => props.onFormSwitch('register')}*/  >Don't have an account? Register here.</a>
         </div>
