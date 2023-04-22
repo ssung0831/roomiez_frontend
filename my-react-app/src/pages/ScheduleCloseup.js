@@ -2,46 +2,50 @@ import React, { useState } from 'react';
 import './ScheduleCloseup.css';
 import image from './home.png';
 import image2 from './arrow.png';
+import Button from 'react-bootstrap/Button'
 
 export const ScheduleCloseup = () => {
   
 
-  const [taskID, setTaskID] = useState(window.location.href.split("/") [4]);
+ const [taskID, setTaskID] = useState(window.location.href.split("/") [4]);
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [taskName, setTaskName] = useState('');
+  const [assignTo, setAssignTo] = useState('');
 
-  // setTaskID(window.location.href.split("/") [4]);
+//  setTaskID(window.location.href.split("/") [4]);
 
-  // function getTaskData() {
-  //   fetch(`http://localhost:8080/tasks/${taskID}`, {
-  //     method: 'GET',
-  //     headers: { 'Content-Type': 'application/json' }
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //   console.log(data);
-  // });
-  //   setDescription(data["description"]);
-  //   setDueDate(data["endDate"]);
-  //   setTaskName(data["name"]);
-  // }
+  function getTaskData() {
+    fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/tasks/${taskID}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+    console.log(data);
+    setDescription(data.description);
+    setDueDate(data.endDate);
+    setTaskName(data.name);
+    setAssignTo(data.assigneeName);
+  });
+  
+  }
 
-//  getTaskData();
+ getTaskData();
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    // fetch('http://localhost:8080/groups/email', {
-    // method: 'POST',
-    // headers: { 'Content-Type': 'application/json' },
-    // body: JSON.stringify({taskID: taskID })
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   console.log(data);
-    // });
+    console.log("tyler2");
+    fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/email?username=${assignTo}&taskIn=${taskID}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("tyler");
+    });
   }
 
   return (
@@ -58,20 +62,19 @@ export const ScheduleCloseup = () => {
    </a>
    
     <div class="loginSquare">
-    {/* <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold' }}>Task: {taskName} */}
+    <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold' }}>{taskName}
 
-    <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold' }}>Task:
-
-      {/* <div style={{fontSize: '20px', color: '#2C2B5A', fontWeight: 'thin', marginTop: '10px'}}> Status: Due {dueDate} </div> */}
-      <div style={{fontSize: '20px', color: '#2C2B5A', fontWeight: 'thin', marginTop: '10px'}}> Status: Due </div>
+      <div style={{fontSize: '20px', color: '#2C2B5A', fontWeight: 'thin', marginTop: '10px'}}> Status: Due {dueDate} </div>
 
       <div className = "taskDescription">
-        {/* {description} */}
+        {description}
       </div>
 
+      <form onSubmit={handleSubmit}>
       <div className = 'buttonname'>
-      <button type="submit" class="btn2">remind roommate</button>
+      <Button type="submit" className="btn2">remind roommate</Button>
       </div>
+      </form>
     
     
     </div>

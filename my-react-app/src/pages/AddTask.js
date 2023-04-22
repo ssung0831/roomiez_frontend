@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import './AddTask.css';
 import image from './home.png';
 import myImage from './circle.png';
+import Button from 'react-bootstrap/Button'
 
 export const AddTask = () => {
+
+  const [userID, setUserID] = useState(null);
 
   var loggedIn = false;
   var userId = "-1";
@@ -25,6 +28,7 @@ window.onload = function getID() {
 
     //track cookie
     console.log(loggedIn);
+    setUserID(userId);
     console.log(userId);
 }
 
@@ -50,31 +54,27 @@ function getCookie(cname) {
     const [description, setDescription] = useState('');
     const[assignTo, setAssignTo] = useState('');
     const [repeat, setRepeat] = useState('daily');
-    const [userID, setUserID] = useState(null);
+    const [assigneeID, setAssigneeID] = useState('');
     const [groupID, setGroupID] = useState(null);
     const members = new Map();
+    const [dropdownOptions, setDropdownOptions] = useState([]);
 
-    // const options = members.map((member) => (
-    //   <option key={member.username} value={member.name}>
-    //     {username.name}
-    //   </option>
-    // ));
+      /*put in name of assignee to get their id*/
+    function getUserID() {
+      fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/getId/${assignTo}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(response => response.json())
+      .then(data => {
+      setAssigneeID(data);
+      console.log("hi"+ assigneeID);
+      });
+    }
 
-    // function getUserID() {
-    //   fetch(`http://localhost:8080/user/${assignTo}`, {
-    //     method: 'GET',
-    //     headers: { 'Content-Type': 'application/json' },
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data);
-    //   });
-    //   setUserID(data);
-    //   console.log(userID);
-    // }
-
+    /*put in user's id to get their group- this will create the dropdown */
     function getGroupId() {
-      fetch(`http://localhost:8080/user/` + userId, {
+      fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + 1, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -83,48 +83,56 @@ function getCookie(cname) {
         console.log(data.groupID);
         setGroupID(data.groupID);
       });
+  
     }
 
-    //     data.users.forEach(user => {
-    //       members.set(user.name, user.username);
-    //     });
-    //   });
-    //   console.log(members);
-    // }
+    /*once i have the group id, i can get all the usernames and put them in a dropdown */
+    function getUsernames() {
+      fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/users`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.users);
+        
+        data.users.forEach(user => {
+          members.set(user.username, user.name);
+        });
+        
+        console.log(members);
+      })
+      .then(() => {
+        const options = Array.from(members.keys()).map((username) => (
+          <option key={username} value={username}>
+            {members.get(username)}
+          </option>
+        ));
 
-    // function getUsernames() {
-    //   fetch(`http://localhost:8080/groups/${groupID}/users`, {
-    //     method: 'GET',
-    //     headers: { 'Content-Type': 'application/json' },
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data);
-
-    //     data.users.forEach(user => {
-    //       members.set(user.name, user.username);
-    //     });
-    //   });
-    //   console.log(members);
-    // }
+        setDropdownOptions(options);
+      });
+    }
   
     const handleSubmit = (event) => {
       event.preventDefault();
       console.log(event);
-      // getUserID();
-      // fetch('http://localhost:8080/tasks/addTask', {
-      // method: 'POST',
-      // headers: { 'Content-Type': 'application/json' },
-      // body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: "", repeatTask: repeat})
-      // })
-      // .then(response => response.json())
-      // .then(data => {
-      //   console.log(data);
-      // });
+      getUserID();
+      console.log(assigneeID);
+      console.log(assignTo);
+      fetch('http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, description: description, assigneeName: assignTo, assigneeID: assigneeID, repeatTask: repeat})
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
     }
 
 
-   // getUsernames();
+    getGroupId();
+    getUsernames();
 
   return (
     
@@ -155,10 +163,11 @@ function getCookie(cname) {
 
 <div class="question form-group">
   <label for="assignTo"> assign to... </label>
-  <input value={assignTo} onChange={(event) => setAssignTo(event.target.value)} type="assignTo" placeholder = "assign to..." required></input>
-  {/* <select id = "assignTo" name = "assignTo" value = {assignTo} onChange = {(event) => setAssignTo(event.target.value)} style={{ height: '38px', minWidth: '10px', maxWidth: '500px' }}>
-    {options}</select> */}
 
+  {/* <input value={assignTo} onChange={(event) => setAssignTo(event.target.value)} type="assignTo" placeholder = "assign to..." required></input> */}
+  <select id = "assignTo" name = "assignTo" value = {assignTo} onChange = {(event) => setAssignTo(event.target.value)} style={{ width: '500%', height: '38px', minWidth: '10px', maxWidth: '500px' }}>
+    {dropdownOptions}
+    </select> 
 </div>
 
 <div class="question form-group">

@@ -129,27 +129,27 @@ body {
    }
    
    .btn3 {
-    color: white;
-    background-color: #934C81;
-    border: none;
-    padding: 10px 70px;
-    text-align: center;
-    display: flex;
-    display: grid;
-    margin: auto;
-    font-size: 20px;
-    border-radius: 12px;
-    margin-top: 30px;
-    transition-duration: 0.4s;
-    width: 80%; /* set the width to 50% of the parent container */
+    color: white !important;
+    background-color: #934C81 !important;
+    border: none !important;
+    padding: 10px 70px !important;
+    text-align: center !important;
+    display: flex !important;
+    display: grid !important;
+    margin: auto !important;
+    font-size: 20px !important;
+    border-radius: 12px !important;
+    margin-top: 30px !important;
+    transition-duration: 0.4s !important;
+    width: 80% !important; 
     
    }
    
    .btn3:focus, .btn:hover {
-    color: white;
-    background-color: #C67B86;
-    box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);
+    color: white !important;
+    background-color: #C67B86 !important;
+    box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07) !important;
    }
    .btn3:focus {
-    outline: 0;
+    outline: 0 !important;
    }
