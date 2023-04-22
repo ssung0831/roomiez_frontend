@@ -91,10 +91,6 @@ function getRoommates() {
 
 getGroupId();
 
-
-//  const {roommates} = {"roommates":{"Kory":[{"endDate":"01/02/1970","groupID":3,"repeat":"weekly","name":"Task 1","description":"This is a dummy task.","progress":0,"startTime":"2:00pm","ID":1,"endTime":"5:00pm","assigneeID":1,"startDate":"01/01/1970"},{"endDate":"01/02/1970","groupID":3,"repeat":"weekly","name":"Task 2","description":"This is a dummy task.","progress":1,"startTime":"2:00pm","ID":2,"endTime":"5:00pm","assigneeID":1,"startDate":"01/01/1970"}],"Chely":[{"endDate":"01/02/1970","groupID":3,"repeat":"weekly","name":"Task 3","description":"This is a dummy task.","progress":0,"startTime":"2:00pm","ID":3,"endTime":"5:00pm","assigneeID":2,"startDate":"01/01/1970"}]}};
-
-
     return (
       <div className="container-fluid Schedule">
         <a href="/Banner">

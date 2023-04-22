@@ -2,52 +2,51 @@ import React, { useState } from 'react';
 import './AddTask.css';
 import image from './home.png';
 import myImage from './circle.png';
-import Button from 'react-bootstrap/Button'
 
 export const AddTask = () => {
 
   const [userID, setUserID] = useState(null);
 
-  var loggedIn = false;
-  var userId = "-1";
+//   var loggedIn = false;
+//   var userId = "-1";
 
-//read in cookie on open
-window.onload = function getID() {
-    //check if user is logged in
+// //read in cookie on open
+// window.onload = function getID() {
+//     //check if user is logged in
 
-    const name = 'userId';
-    console.log(document.cookie);
+//     const name = 'userId';
+//     console.log(document.cookie);
 
-    console.log(getCookie(name));
+//     console.log(getCookie(name));
 
-    const newId = getCookie(name)
-    if (getCookie(name) !== ""){
-        loggedIn = true;
-        userId = newId;
-    }
+//     const newId = getCookie(name)
+//     if (getCookie(name) !== ""){
+//         loggedIn = true;
+//         userId = newId;
+//     }
 
-    //track cookie
-    console.log(loggedIn);
-    setUserID(userId);
-    console.log(userId);
-}
+//     //track cookie
+//     console.log(loggedIn);
+//     setUserID(userId);
+//     console.log(userId);
+// }
 
-//read cookieValue
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
+// //read cookieValue
+// function getCookie(cname) {
+//     let name = cname + "=";
+//     let decodedCookie = decodeURIComponent(document.cookie);
+//     let ca = decodedCookie.split(';');
+//     for(let i = 0; i <ca.length; i++) {
+//         let c = ca[i];
+//         while (c.charAt(0) === ' ') {
+//             c = c.substring(1);
+//         }
+//         if (c.indexOf(name) === 0) {
+//             return c.substring(name.length, c.length);
+//         }
+//     }
+//     return "";
+// }
 
 
     const [name, setName] = useState('');
@@ -59,7 +58,7 @@ function getCookie(cname) {
     const members = new Map();
     const [dropdownOptions, setDropdownOptions] = useState([]);
 
-      /*put in name of assignee to get their id*/
+      /*put in name of assignee to get their id GOOD*/
     function getUserID() {
       fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/getId/${assignTo}`, {
         method: 'GET',
@@ -72,7 +71,7 @@ function getCookie(cname) {
       });
     }
 
-    /*put in user's id to get their group- this will create the dropdown */
+    /*put in user's id to get their group- this will create the dropdown GOOD */
     function getGroupId() {
       fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + 1, {
         method: 'GET',
@@ -86,7 +85,7 @@ function getCookie(cname) {
   
     }
 
-    /*once i have the group id, i can get all the usernames and put them in a dropdown */
+    /*once i have the group id, i can get all the usernames and put them in a dropdown GOOD */
     function getUsernames() {
       fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/users`, {
         method: 'GET',
@@ -126,6 +125,7 @@ function getCookie(cname) {
       })
       .then(response => response.json())
       .then(data => {
+        console.log("TYLER");
         console.log(data);
       });
     }
@@ -179,7 +179,7 @@ function getCookie(cname) {
     <option value="monthly">repeat monthly</option>
   </select>
 </div>
-        <button type="submit" class="btn3">save</button>
+        <button type="submit" className="btn3">save</button>
      </form>
      
      </div>
