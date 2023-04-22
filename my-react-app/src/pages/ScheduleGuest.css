@@ -1,0 +1,61 @@
+.ScheduleGuest {
+    overflow-x: auto; 
+    overflow-y: auto; 
+    text-align: center;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(99deg, #3e306d, #aa5e82);
+    font-family: 'Raleway';
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+  
+  .scheduleGuest {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+  }
+  
+  .Roommate {
+    display: flex;
+    flex-direction: column;
+  }
+    
+    .roomieName {
+      font-family: 'Raleway', sans-serif;
+      color:white;
+    }
+    
+    
+    
+    .taskBox:hover {
+      background-image: linear-gradient(99deg,#9c5484, #b26984) !important;
+      color: white !important;
+    }
+    
+    
+    
+    .taskBox {
+      margin-top: 20px !important;
+      background-color: #D1C6D6 !important;
+      border-radius: 40px !important;
+      color:black !important;
+      height: 125px !important;
+      width: 225px !important;
+      opacity: 0.8 !important;
+      border: none !important;
+      font-family: 'Arial' !important;
+      font-size: 20px !important;
+    }
+  
+    span{
+      margin-top: 10px;
+      display: block;
+      color: #3e306d ;
+      font-size: 25px;
+    }
+  
