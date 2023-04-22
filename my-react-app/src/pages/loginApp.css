@@ -89,7 +89,12 @@
   min-width: 320px;
   border-radius: 15px;
   cursor: pointer;
-  border: none;
   padding: 12px !important;
   margin-bottom:30px;
+}
+
+.errorMessage
+{
+  margin-top: 10px;
+  color: red;
 }
