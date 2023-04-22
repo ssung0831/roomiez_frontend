@@ -4,24 +4,6 @@ import Button from 'react-bootstrap/Button'
 import './loginApp.css';
 import './loginApp.js';
 
-function registerUser(email, pass, name)
-{
-    fetch('http://localhost:8080/user/registration', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({username: {email}, password: {pass}, name: {name}})
-    })
-
-    .then (response => response.json())
-    .then (data => {
-        document.cookie = "username=" + data.userid;
-
-    })
-
-    /*console.log(username);
-    console.log(password);
-    console.log(name);*/
-}
 
 export const Register = (props) => {
     const [email, setEmail] = useState('');
@@ -31,8 +13,19 @@ export const Register = (props) => {
     const handleSubmit = (e) => {
         //prevents page from getting reloaded and losing our state
         e.preventDefault();
-        console.log("email " + email);
-        registerUser(email, pass, name);
+        //console.log("email " + email);
+        //registerUser(email, pass, name);
+            fetch('http://localhost:8080/user/registration', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({username: email, password: pass, name: name})
+            })
+        
+            .then (response => response.json())
+            .then (data => {
+                document.cookie = "username=" + data.userid;
+        
+            })
     }
 
 
@@ -46,7 +39,7 @@ export const Register = (props) => {
              <input className = "inputLogin" value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" required/>
              <label className="labelLogin" htmlFor="password">password</label>
              <input className = "inputLogin" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="password" id="********" name="password" required/>
-             <Button className = "loginButton" type="submit" href="/Banner" >login</Button>
+             <Button className = "loginButton" type="submit" /*href="/Banner" */>login</Button>
         </form> 
         <a href = '/Login' className="link-bin" /*onClick={() => props.onFormSwitch('login')}*/ >Already have an account? Login here.</a>
         </div>
