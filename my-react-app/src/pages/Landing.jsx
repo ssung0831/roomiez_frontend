@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
-// import './Landing.css';
+import './Landing.css';
 import {AiOutlinePlus} from "react-icons/ai"
 
 
@@ -29,10 +29,14 @@ export const Landing = () =>{
             // <a href="/Login">Login</a>
             // <a href="/Register">Sign Up</a>
 
-            <div className = "container-fluid Landing" style = {{padding:0}}>
+            <div className = "container-fluid Landing" style = {{padding:0, fontSize:22}}>
+                <div className = "nav-menu">
+                    <a class="links" href="/Login">Login</a>
+                    <a class="links" href="/Register">Sign Up</a>
+                </div>
 
-                    <a href="/Login">Login</a>
-                    <a href="/Register">Sign Up</a>
+
+                    
                 
                 
                 {/* </div>AiOutlinePlus className = "plus" style = {{display: 'flex', color:'#eee', fontSize: '60px'}}/> */}
@@ -54,9 +58,9 @@ export const Landing = () =>{
                     
                     </div> */}
 
-                    <div className = "align-right">
+                    <div className = "align-right-landing">
                         <p>
-                        <Button className = "Button" href = "/ScheduleGuest" variant="light" style={{backgroundColor: '#eee',
+                        <Button className = "Button-landing" href = "/ScheduleGuest" variant="light" style={{backgroundColor: '#eee',
                             borderRadius: 4,
                             color: '#37306B',
                             padding: 50,
