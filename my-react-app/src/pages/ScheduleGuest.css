@@ -29,17 +29,43 @@
       font-family: 'Raleway', sans-serif;
       color:white;
     }
+
+    .row {
+      display: flex;
+    }
     
-    
-    
-    .taskBox:hover {
-      background-image: linear-gradient(99deg,#9c5484, #b26984) !important;
-      color: white !important;
+    .column {
+      flex: 50%;
     }
     
     
     
-    .taskBox {
+    .taskBox2:hover {
+      background-image: linear-gradient(99deg,#9c5484, #b26984) !important;
+      color: white !important;
+    }
+
+    .loginBox2{
+      position:absolute;
+      background-color: rgba(238, 228, 241, 0.969);
+      opacity: 0.95;
+      left:0%;
+      right:40%;
+      width:40%;
+      padding-left: 1%;
+      padding-right: 1%;
+      padding-top: 3%;
+      padding-bottom: 3%;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 45px 45px 45px 45px;
+  }
+    
+    
+    
+    .taskBox2 {
       margin-top: 20px !important;
       background-color: #D1C6D6 !important;
       border-radius: 40px !important;
@@ -49,7 +75,7 @@
       opacity: 0.8 !important;
       border: none !important;
       font-family: 'Arial' !important;
-      font-size: 20px !important;
+      font-size: 15px !important;
     }
   
     span{
@@ -57,5 +83,22 @@
       display: block;
       color: #3e306d ;
       font-size: 25px;
+    }
+    .buttons{
+      align-items: center;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .grid-item {
+      border: 1px solid black;
+      padding: 1rem;
+    }
+    
+    .grid-item:nth-child(odd) {
+      background-color: #eee;
     }
   
