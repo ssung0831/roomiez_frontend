@@ -99,7 +99,9 @@ export const Banner = () =>{
         .then(() => {
             const options = names;
             
+            if(groupID != 0){
             setDropdownOptions(options);
+            }
         });
 
             console.log("groupID: " + groupID);
