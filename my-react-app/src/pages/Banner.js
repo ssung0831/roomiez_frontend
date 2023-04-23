@@ -37,6 +37,9 @@ export const Banner = () =>{
         //track cookie
         console.log(loggedIn);
         console.log(userId);
+        console.log(loggedIn);
+        setUserID(userId);
+        console.log(userId);
     }
 
     //read cookieValue
@@ -57,21 +60,23 @@ export const Banner = () =>{
     }
 
     let names = [];
-    var groupID = 0;
+    const [groupID, setGroupID] = useState('');
 
     const [dropdownOptions, setDropdownOptions] = useState(['', '', '', '']);
     console.log("HERE" + document.cookie);
 
-    function getNames(){
+ //   function getNames(){
         
-        fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/${userID}`,{
+        fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/` + userID,{
             method:'GET',
             headers:{'Content-Type': 'application/json'},
         })
         .then(response => response.json())
         .then(data => {
- 
-            groupID = data.groupID;
+            console.log(userID);
+          //  groupID = data.groupID;
+          setGroupID(data.groupID);
+            console.log(groupID);
 
             fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/users`,{
             method:'GET',
@@ -100,10 +105,10 @@ export const Banner = () =>{
             console.log("groupID: " + groupID);
         })
        
-    }
+  //  }
 
     // // function Banner() {
-    getNames();
+    // getNames();
     
        return (
             <div className = "container-fluid Banner" style = {{padding:150}}>
