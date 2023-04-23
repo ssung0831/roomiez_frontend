@@ -47,6 +47,7 @@
 
     .loginBox2{
       position:absolute;
+      font-family: 'Raleway', 'Arial';
       background-color: rgba(238, 228, 241, 0.969);
       opacity: 0.95;
       left:0%;

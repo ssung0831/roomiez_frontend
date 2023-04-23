@@ -114,7 +114,9 @@ function getCookie(cname) {
             
         ));
 
+        if(groupID != 0){
         setDropdownOptions(options);
+        }
 
         console.log("shit");
         console.log(members);
