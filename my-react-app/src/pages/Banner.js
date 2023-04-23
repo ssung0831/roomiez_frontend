@@ -61,6 +61,7 @@ export const Banner = () =>{
 
     let names = [];
     const [groupID, setGroupID] = useState('');
+    const [groupName, setGroupName] = useState('');
 
     const [dropdownOptions, setDropdownOptions] = useState(['', '', '', '']);
     console.log("HERE" + document.cookie);
@@ -85,7 +86,7 @@ export const Banner = () =>{
         .then(response => response.text())
         .then(data => {
             console.log(data);
-            console.log(`http://localhost:8080/groups/3/users`);
+         //   console.log(`http://localhost:8080/groups/3/users`);
             //var userList;
             const jsonData = JSON.parse(data);
             jsonData.users.forEach(user => {
@@ -102,7 +103,21 @@ export const Banner = () =>{
             if(groupID != 0){
             setDropdownOptions(options);
             }
-        });
+        })
+        .then(() => {
+            fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}`,{
+                method:'GET',
+                headers: {'Content-Type': 'application/json'},
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log("testi" + data);
+                const parsedData = JSON.parse(data);
+                const gn = parsedData.groupName;
+                console.log("hi" + gn);
+                setGroupName(gn);
+            });
+        })
 
             console.log("groupID: " + groupID);
         })
@@ -149,7 +164,7 @@ export const Banner = () =>{
                     <div className = "flexing" >
                         
                         <div className = "Roomates" id = "Roomates">
-                            <h3>Roommates:</h3>
+                            <h3>{groupName} Roommates:</h3>
                             <div id = "showNames">
                             {dropdownOptions.map((option, index) => (
                                 <option key={index} value={option}>
