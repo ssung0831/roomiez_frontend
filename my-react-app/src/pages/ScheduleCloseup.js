@@ -85,7 +85,7 @@ export const ScheduleCloseup = () => {
    </a>
    
     <div class="loginSquare">
-    <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold' }}>{taskName}
+    <div style={{ textAlign: 'center', fontSize: '40px', color: '#934C81', fontWeight: 'bold' }}>Task: {taskName}
 
       <div style={{fontSize: '20px', color: '#2C2B5A', fontWeight: 'thin', marginTop: '10px'}}> Status: Due {dueDate} </div>
 
