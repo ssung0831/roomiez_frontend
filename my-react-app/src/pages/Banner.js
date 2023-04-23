@@ -1,4 +1,3 @@
-//import React from 'react';
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
@@ -58,58 +57,51 @@ export const Banner = () =>{
     }
 
     let names = [];
-    let groupID = "";
-    //'http://localhost:8080/users/${userID}/users'
+    var groupID = 0;
 
-    const [dropdownOptions, setDropdownOptions] = useState(['Option 1', 'Option 2', 'Option 3', 'Option 4']);
-    
+    const [dropdownOptions, setDropdownOptions] = useState(['', '', '', '']);
+    console.log("HERE" + document.cookie);
+
     function getNames(){
         
-        fetch('http://localhost:8080/users/${userID}/users',{
+        fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/${userID}`,{
             method:'GET',
-            headers:{'Content-Type': 'application/text'},
+            headers:{'Content-Type': 'application/json'},
         })
+        .then(response => response.json())
         .then(data => {
-            console.log(data);
-            groupID = data.getGroupID();
-        })
-       
+ 
+            groupID = data.groupID;
 
-        fetch('http://localhost:8080/groups/3/users',{
+            fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/users`,{
             method:'GET',
             headers: {'Content-Type': 'application/json'},
         })
         .then(response => response.text())
         .then(data => {
             console.log(data);
+            console.log(`http://localhost:8080/groups/3/users`);
             //var userList;
             const jsonData = JSON.parse(data);
             jsonData.users.forEach(user => {
-                let myString = user.name + " \n";
+                let myString = user.name;
                 console.log(myString);
                 names.push(myString);
             });
 
-            
-
             console.log(names);
         })
         .then(() => {
-            // const options = names;
-            // <option value = {names}></option>
-           
-
             const options = names;
             
             setDropdownOptions(options);
         });
+
+            console.log("groupID: " + groupID);
+        })
        
-        
     }
 
-   
-    
-  
     // // function Banner() {
     getNames();
     
@@ -159,12 +151,9 @@ export const Banner = () =>{
                             ))}
 
                             </div>
-                           
-                            
                         </div>
                         
                         <div >
-                            
                             <p>
                             <Button className = "Button" href = "/Remove" variant="light" style={{backgroundColor: '#eee',
                                 borderRadius: 4,
@@ -175,26 +164,14 @@ export const Banner = () =>{
                                 opacity:0.8}}>Remove Roomate</Button>
                             </p>
                         </div>
-
-        
-                        
                     </div>
-
-                   
-                    
-
-                    
+             
                 </Container>
                     {/* <Box className="circle2">
                     
                     </Box> */}
                     
             </div>  
-
-            
+     
        );
     }
-
-
-
-//export default Banner;
