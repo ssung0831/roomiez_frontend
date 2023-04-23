@@ -20,9 +20,10 @@ function generateUniqueCode() {
 
 export const JoinGroup = () => {
 
-//cookie stuff
-var loggedIn = false;
-var userId = 1;
+  const [userID, setUserID] = useState(null);
+
+  var loggedIn = false;
+  var userId = "-1";
 
 //read in cookie on open
 window.onload = function getID() {
@@ -39,9 +40,9 @@ window.onload = function getID() {
         userId = newId;
     }
 
-    
     //track cookie
     console.log(loggedIn);
+    setUserID(userId);
     console.log(userId);
 }
 
@@ -91,7 +92,7 @@ function getCookie(cname) {
 
 function assignGroupID({ groupId }) {
   console.log(`group id from assign group id: ${groupId}`);
-  fetch(`http://localhost:8080/user/${userId}/setGroup?groupID=${groupId}`, {
+  fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/${userID}/setGroup?groupID=${groupId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -122,7 +123,7 @@ function assignGroupID({ groupId }) {
 
 function assignGroupID2({ groupId2 }) {
   console.log(`group id from assign group id: ${groupId2}`);
-  fetch(`http://localhost:8080/user/${userId}/setGroup?groupID=${groupId2}`, {
+  fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/user/${userID}/setGroup?groupID=${groupId2}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -156,7 +157,7 @@ function getGroupID({ groupName }) {
   console.log(groupName);
   console.log('hey from getGroupId function' + groupName);
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8080/groups?groupName=${groupName}`, {
+    fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups?groupName=${groupName}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -177,7 +178,7 @@ function getGroupID2({ groupName2 }) {
   console.log(groupName2);
   console.log('hey from getGroupId function' + groupName2);
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8080/groups?groupName=${groupName2}`, {
+    fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups?groupName=${groupName2}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -205,7 +206,7 @@ function getGroupID2({ groupName2 }) {
     });
     console.log(body);
   
-    fetch('http://localhost:8080/groups', {
+    fetch('http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups', {
       method: 'POST',
       // mode: 'no-cors',
       headers: {
