@@ -1,0 +1,71 @@
+.Landing {
+    background: url("./background4.png");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+
+  .nav-menu {
+	margin-top:10px;
+	overflow: auto;
+	/* height: auto; */
+	/* display: flex; */
+    text-align: right;
+}
+
+.links {
+	/* display: inline-block; */
+	text-align: center;
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+}
+  
+  .align-right-landing {
+    display: flex !important;
+    justify-content: right !important;
+  }
+  
+  .Button-landing{
+    font-family: 'Raleway', sans-serif;
+    margin-top: 70%;
+  }
+  
+  .flexin-landing{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  
+  .circle2 {
+    height: 140vmin;
+    opacity:0.6;
+    border-radius: 50%;
+    background-image: linear-gradient(99deg,#C46186, #4D2D74);
+    animation: circle-spin infinite 20s linear;
+      
+  }
+  body {
+    overflow: hidden;
+  }
+  
+  .icon-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  @keyframes circle-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  

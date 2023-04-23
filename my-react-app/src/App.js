@@ -9,6 +9,7 @@ import {Schedule} from "./pages/Schedule";
 import {ScheduleGuest} from "./pages/ScheduleGuest";
 import {JoinGroup} from "./pages/JoinGroup";
 import {Remove} from "./pages/Remove";
+import {Landing} from "./pages/Landing";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -21,7 +22,8 @@ function App() {
        <Route path="/AddTask" element={<AddTask />}/>
       <Route path="/AddTask" element={<AddTask />}/>
       <Route path="/ScheduleCloseup/:taskID" element={<ScheduleCloseup />}/>
-      <Route path = "/" element = {<Login />} />
+      <Route path = "/Login" element = {<Login />} />
+      <Route path = "/" element = {<Landing />} />
       <Route path = "/Register" element = {<Register />} />
       <Route path = "/Schedule" element = {<Schedule />} />
       <Route path = "/ScheduleGuest" element = {<ScheduleGuest />} />
