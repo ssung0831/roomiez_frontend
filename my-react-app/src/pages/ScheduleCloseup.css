@@ -74,7 +74,7 @@ body {
     border-radius: 12px !important;
     transition-duration: 0.4s !important;
     width: 80% !important; 
-    transform: translate(0, 525%) !important;
+    transform: translate(0, 500%) !important;
   }
    
    .btn2:focus, .btn2:hover {

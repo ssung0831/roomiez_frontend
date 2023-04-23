@@ -93,7 +93,7 @@ function getGroupId() {
 
   usePollingEffect(
       () => {
-        if(groupID != null){
+        if(groupID != null && groupID != 0){
           fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/userTasks`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },

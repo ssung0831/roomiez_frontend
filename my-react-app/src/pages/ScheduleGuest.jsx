@@ -44,7 +44,7 @@ export const ScheduleGuest = () => {
 
     return (
       <div className="container-fluid ScheduleGuest">
-        <a href="/Banner">
+        <a href="/">
           
           <FaHouseUser style={{ fontSize: '75px', color: '#D1C6D6', display: 'flex', justifyContent: 'flex-start', padding: '12px' }} />
         </a>
