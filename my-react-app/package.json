@@ -44,7 +44,7 @@
 
   ,
   "scripts": {
-    "start": "node app.js",
+    "start": "node App.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
