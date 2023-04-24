@@ -5,7 +5,7 @@
     "react-router-dom": "^6.10.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node my-react-app/src/App.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

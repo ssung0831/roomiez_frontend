@@ -1,0 +1,1 @@
+web: node my-react-app/src/App.js
