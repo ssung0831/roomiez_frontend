@@ -18,6 +18,7 @@ export const Schedule = () => {
   const [userID, setUserID] = useState(null);
   const [groupID, setGroupID] = useState(null);
   const [roommates, setRoommates] = useState({});
+  const [name, setName] = useState('');
 
   var loggedIn = false;
   var userId = "-1";
@@ -69,6 +70,7 @@ function getGroupId() {
   .then(data => {
     console.log(data.groupID);
     setGroupID(data.groupID);
+    setName(data.name);
   });
 }
 
@@ -93,7 +95,7 @@ function getGroupId() {
 
   usePollingEffect(
       () => {
-        if(groupID != null && groupID != 0){
+        if(groupID != null){
           fetch(`http://roomieztestnv-env.eba-s98dmkpn.us-east-1.elasticbeanstalk.com/groups/${groupID}/userTasks`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -101,7 +103,21 @@ function getGroupId() {
           .then(response => response.json())
           .then(data => {
             console.log(data);
+           // setRoommates(data.roommates);
+           if (groupID === 0) {
+            const filteredRoommates = Object.keys(data.roommates)
+              .filter(
+                (roommate) => roommate.toLowerCase() === name.toLowerCase()
+              )
+              .reduce((obj, key) => {
+                obj[key] = data.roommates[key];
+                return obj;
+              }, {});
+
+            setRoommates(filteredRoommates);
+          } else {
             setRoommates(data.roommates);
+          }
           })
         }
       },
