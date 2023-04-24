@@ -1,7 +1,6 @@
 {
   "name": "my-react-app",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -40,12 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-    
-  }
-
-  ,
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
