@@ -1,1 +1,1 @@
-web: node my-react-app/src/App.js
+web: node my-react-app/src/index.js
