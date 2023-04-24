@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import './Banner.css';
+import { useNavigate } from 'react-router-dom';
 import {AiOutlinePlus} from "react-icons/ai"
 
 
@@ -11,6 +12,7 @@ export const Banner = () =>{
     // function Box({ children, ...props }) {
     //     return <div {...props}>{children}</div>
     // }
+    const navigate = useNavigate();
 
     var loggedIn = false;
     var userId = "-1";
@@ -57,6 +59,13 @@ export const Banner = () =>{
             }
         }
         return "";
+    }
+
+    function logOut(e)
+    {
+        e.preventDefault();
+        document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        navigate('/Login');
     }
 
     let names = [];
@@ -129,6 +138,9 @@ export const Banner = () =>{
     
        return (
             <div className = "container-fluid Banner" style = {{padding:150}}>
+                <div>
+                    <Button className = "logOut" onClick = {logOut}>Log out</Button>
+                </div>
                <a href = "/JoinGroup">
                 <AiOutlinePlus className = "plus" style = {{display: 'flex', color:'#eee', fontSize: '60px'}}/>
                 </a>

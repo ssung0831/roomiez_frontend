@@ -7,6 +7,19 @@
 
 }
 
+.logOut
+{
+  padding: 10px !important;
+	text-decoration: none !important;
+	color: white !important;
+  background: none !important;
+  border: none !important;
+  margin-left: 1000px;
+  margin-top: -260px;
+  font-family: 'Raleway', sans-serif;
+  font-size: x-large !important;
+}
+
 .align-right {
   display: flex !important;
   justify-content: right !important;
