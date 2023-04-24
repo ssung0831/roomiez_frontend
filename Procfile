@@ -1,1 +1,1 @@
-web: /my-react-app npm start
+web: npm start
