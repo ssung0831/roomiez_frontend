@@ -101,7 +101,14 @@ function getCookie(cname) {
         console.log(data.users);
         
         data.users.forEach(user => {
+        console.log(groupID);
+        if (groupID == 0) {
+          if (user.ID == userID) {
+            members.set(user.username, user.name);
+          }
+        } else {
           members.set(user.username, user.name);
+        }
         });
         
         console.log(members);
@@ -114,9 +121,9 @@ function getCookie(cname) {
             
         ));
 
-        if(groupID != 0){
+      //  if(groupID != 0){
         setDropdownOptions(options);
-        }
+      //  }
 
         console.log("shit");
         console.log(members);

@@ -65,7 +65,7 @@ export const Banner = () =>{
     {
         e.preventDefault();
         document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        navigate('/Login');
+        navigate('/');
     }
 
     let names = [];
