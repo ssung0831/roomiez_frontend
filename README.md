@@ -14,4 +14,5 @@ For our front-end, we used React. This allowed us to reuse components of our cod
 
 Deployment of both the back-end and front-end was done in AWS Elastic Beanstalk and Cloud RDS, as well as S3.
 
+## Try it Out
 Check out our website here: http://roomiezfrontend.s3-website-us-east-1.amazonaws.com/
