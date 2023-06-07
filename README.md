@@ -16,3 +16,6 @@ Deployment of both the back-end and front-end was done in AWS Elastic Beanstalk 
 
 ## Try it Out
 Check out our website here: http://roomiezfrontend.s3-website-us-east-1.amazonaws.com/
+
+Devpost: https://devpost.com/software/roomiez?ref_content=existing_user_added_to_software_team&ref_feature=portfolio&ref_medium=email&utm_campaign=software&utm_content=added_to_software_team&utm_medium=email&utm_source=transactional#app-team
+Backend Repo: https://github.com/karfania/roomiez-backend
