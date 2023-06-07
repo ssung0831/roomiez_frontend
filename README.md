@@ -1,6 +1,10 @@
 # roomiez_frontend
 
+## What it does
+
 Roomiez is an all-in-one task management platform with user-authentication and login functionality that allows users to join groups of other users and manage the collective’s outgoing tasks. A cumulative dashboard lists these tasks by person and deadline on the home page, and users can click on the task to view more details as well as notify the assignee to complete their task.
+
+## How we Built It
 
 Roomiez is a full-stack web application. In order to develop a dynamic and responsive service, we leveraged modern frameworks in both the back-end and front-end.
 
